@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Word</title>
+  </head>
+  <body>
+    <h1>Update Word</h1>
+    <h2><%= foundWord.word %></h2>
+    <form action="/words/update/<%= foundWord.id%>?_method=PUT" method="POST">
+      <div>
+        <label for="meaning">Meaning:</label><br />
+        <textarea cols="50" rows="20" type="text" id="meaning" name="meaning">
+        <%= foundWord.meaning%>
+        </textarea
+        ><br />
+      </div>
+      <button type="submit">Update Word</button>
+    </form>
+  </body>
+</html>

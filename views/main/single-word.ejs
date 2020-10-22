@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= foundWord.word %></title>
+  </head>
+  <body>
+    <a style="font-size: 1.5rem" href="/words/get-words">Home</a>
+
+    <div
+      style="background-color: lightblue; padding: 10px; margin-bottom: 10px"
+    >
+      <h1><%= foundWord.word.toUpperCase() %></h1>
+      <p><strong>Definition:</strong> <%= foundWord.meaning %></p>
+      <button style="margin-bottom: 10px">
+        <a style="text-decoration: none" href="/words/update/<%=foundWord.id%>"
+          >Update Word</a
+        >
+      </button>
+      <form
+        action="/words/delete/<%= foundWord.id %>?_method=DELETE"
+        method="POST"
+      >
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  </body>
+</html>
