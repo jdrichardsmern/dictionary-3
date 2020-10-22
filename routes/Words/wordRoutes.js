@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Word = require('./models/Word');
+const Comment = require('../Comments/models/Comment');
 
 router.get('/get-words', (req, res) => {
   Word.find()
@@ -50,7 +51,12 @@ router.get('/single-word/:wordId', (req, res) => {
   Word.findById(req.params.wordId)
     .then((dbWord) => {
       if (dbWord) {
-        return res.render('main/single-word', { foundWord: dbWord });
+        Comment.find({ owner: dbWord.id }).then((dbComments) => {
+          return res.render('main/single-word', {
+            foundWord: dbWord,
+            foundComments: dbComments
+          });
+        });
       } else {
         return res.status(400).send('No Word Found');
       }

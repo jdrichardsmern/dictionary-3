@@ -10,6 +10,7 @@ require('dotenv').config();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/Users/userRoutes');
 const wordRouter = require('./routes/Words/wordRoutes');
+const commentRouter = require('./routes/Comments/commentRoutes');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use(methodOverride('_method'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/words', wordRouter);
+app.use('/comments', commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
